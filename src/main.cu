@@ -191,11 +191,13 @@ void eval(
 				error.at(mtk::mateval::relative_residual),
 				complexity / elapsed_tiem * 1e-12
 				);
+		std::fflush(stdout);
 	}
 }
 
 } // unnamed namespace
 
 int main() {
-	eval<half>(1u << 10, 1u << 14);
+	eval<half>                         (1u << 10, 1u << 14);
+	eval<nvcuda::wmma::precision::tf32>(1u << 10, 1u << 14);
 }
